@@ -7,21 +7,15 @@ import {
   Button,
   Alert,
   ScrollView,
-  AppRegistry
 } from "react-native";
 
-import Home from "./Home";
-
-import Workout from "./Workout";
-
-export default function App() {
+export default function Navbar() {
   return (
-
     <View style={styles.container}>
       <ScrollView>
         <Text>
+          Workout Track
           <hr></hr>
-          First line in React Native! 🎉
           {/* <Link to="/"> */}
           <Button title="Press me" onPress={Home} />
           {/* </Link> */}
@@ -32,10 +26,9 @@ export default function App() {
         <StatusBar style="auto" />
       </ScrollView>
       <ScrollView>
-      <Workout />
+        <Workout />
       </ScrollView>
     </View>
-   
   );
 }
 
@@ -47,5 +40,3 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
-
-// AppRegistry.registerComponent("MyApp", () => App)
