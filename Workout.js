@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View, Button, Alert, TextInput } from "react-native";
 import { StatusBar } from "expo-status-bar";
 
-export default function Workout() {
+export default function Workout({history}) {
   return (
     <View style={styles.container}>
       <Text>
@@ -42,15 +42,11 @@ export default function Workout() {
             height: 40,
             borderColor: "gray",
             borderWidth: 1,
-            
           }}
           defaultValue="...Amazing!"
         />
         <hr></hr>
-        <Button
-          title="Press me"
-          onPress={() => Alert.alert("Simple Button pressed")}
-        />
+        <Button title="Press me" onPress={() => history.push("/")} />
       </Text>
 
       <StatusBar style="auto" />
