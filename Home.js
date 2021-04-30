@@ -1,10 +1,12 @@
 import React from "react";
 import { StyleSheet, Text, View, Button, Alert } from "react-native";
 import { StatusBar } from "expo-status-bar";
+import Navbar from "./Navbar";
 
 export default function Home({ history }) {
   return (
     <View style={styles.container}>
+      <Navbar />
       <Text>
         You made it home! 🛌
         <hr></hr>

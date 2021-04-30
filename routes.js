@@ -8,7 +8,6 @@ import {
   MemoryRouter,
 } from "react-router-native";
 import Home from "./Home";
-import getConfirmation from "./getConfirmation";
 import Workout from "./Workout";
 
 export default class Routes extends React.Component {

@@ -12,22 +12,12 @@ import {
 export default function Navbar() {
   return (
     <View style={styles.container}>
-      <ScrollView>
-        <Text>
-          Workout Track
-          <hr></hr>
-          {/* <Link to="/"> */}
-          <Button title="Press me" onPress={Home} />
-          {/* </Link> */}
-        </Text>
-      </ScrollView>
-      <ScrollView>
-        <Home />
-        <StatusBar style="auto" />
-      </ScrollView>
-      <ScrollView>
-        <Workout />
-      </ScrollView>
+      <Text>
+        Workout Track
+        <hr></hr>
+
+      </Text>
+      <StatusBar style="auto" />
     </View>
   );
 }
