@@ -27,7 +27,7 @@
     "web": {
       "build": {
         "babel": {
-          "include": ["react-router-native"],
+          "include": ["react-router-native", "navigationbar-react-native"],
           "favicon": "./assets/favicon.png"
         }
       }
