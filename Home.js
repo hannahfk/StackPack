@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View, Button, Alert } from "react-native";
 import { StatusBar } from "expo-status-bar";
 
-export default function Home() {
+export default function Home({ history }) {
   return (
     <View style={styles.container}>
       <Text>
@@ -10,10 +10,7 @@ export default function Home() {
         <hr></hr>
         Is it donut time yet? 🍩
         <hr></hr>
-        <Button
-          title="Press me"
-          onPress={() => Alert.alert("Simple Button pressed")}
-        />
+        <Button title="Press me" onPress={() => history.push("/workout")} />
       </Text>
 
       <StatusBar style="auto" />
