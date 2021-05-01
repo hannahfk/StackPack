@@ -1,14 +1,3 @@
-import React from "react";
-// import {
-//   StyleSheet,
-//   Text,
-//   View,
-//   Button,
-//   Alert,
-//   TextInput,
-//   ScrollView,
-// } from "react-native";
-import { StatusBar } from "expo-status-bar";
 import {
   Container,
   Header,
@@ -21,54 +10,52 @@ import {
   CardItem,
   Body,
 } from "native-base";
-
+import React from "react";
 import { Alert, StyleSheet, ImageBackground } from "react-native";
 
 const image2 = {
-  uri: "https://wallpaperaccess.com/full/3990577.jpg",
+  uri: "https://media.istockphoto.com/vectors/vector-vertical-endless-border-of-donuts-with-colorful-glaze-sugar-vector-id1190023391?k=6&m=1190023391&s=612x612&w=0&h=bLdFWTZ-AauIN4t0mwym5lTwqftrTG3ynlxGyy_c3WU=",
 };
 
-export default class Workout extends React.Component {
+export default class ProgressScreen extends React.Component {
   showAlert = () => Alert.alert("Message", "Info Saved!");
   render() {
     return (
       <Container>
         <ImageBackground source={image2} style={styles.image}>
           <Header>
-            <Text style={styles.header}>Workouts</Text>
+            <Text style={styles.header}>Progress</Text>
           </Header>
           <Card>
             <CardItem>
               <Body>
-
-                <Text style={styles.medium}>Enter your workout ☞ </Text>
+                <Text style={styles.medium}>You've done some squats, girl! ☞ </Text>
                 <Item regular>
-                  <Input style={styles.input} placeholder="...here" />
+                  <Input style={styles.input} placeholder="Total Squats" />
                 </Item>
 
                 <Text style={styles.medium}>
-                  {" "}
-                  How long did you do this for? 🤯{" "}
+                  That's a lot of time! 🤯
                 </Text>
                 <Item regular>
                   <Input
                     style={styles.input}
-                    placeholder="...you fitness genie!"
+                    placeholder="All the Time!"
                   />
                 </Item>
                 <Text style={styles.medium}>
                   {" "}
-                  How many calories did you burn? 🔥{" "}
+                  This is what you've burned 🍩
                 </Text>
                 <Item regular>
-                  <Input style={styles.input} placeholder="...you are goals" />
+                  <Input style={styles.input} placeholder="Impressive Totals" />
                 </Item>
                 <Text style={styles.medium}>
                   {" "}
-                  Did you make it past rep one? 🏋️‍♀️{" "}
+                  And here's your daily streak! 🏋️‍♀️{" "}
                 </Text>
                 <Item regular>
-                  <Input style={styles.input} placeholder="...Amazing!" />
+                  <Input style={styles.input} placeholder="Wow!" />
                 </Item>
 
                 <Button title="Go to Home" onPress={this.showAlert} success>

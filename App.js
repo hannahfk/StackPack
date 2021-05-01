@@ -14,6 +14,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Home from "./Home";
 import Workout from "./Workout";
 import AppText from "./AppText";
+import ProgressScreen from "./ProgressScreen"
 
 const image = {
   uri:
@@ -21,19 +22,18 @@ const image = {
 };
 
 const image2 = {
-  uri:
-    "https://wallpaperaccess.com/full/3990577.jpg",
+  uri: "https://wallpaperaccess.com/full/3990577.jpg",
 };
 
 const image3 = {
   uri:
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmeTGvGKG9nB3V8Bg3eECrMQQG5dwOZbysfH5D2nMGqkzp66sLOTKqkVWXhZzMBhBN9dk&usqp=CAU"
-}
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmeTGvGKG9nB3V8Bg3eECrMQQG5dwOZbysfH5D2nMGqkzp66sLOTKqkVWXhZzMBhBN9dk&usqp=CAU",
+};
 
 const image4 = {
   uri:
-  "https://fsb.zobj.net/crop.php?r=j9gNj-qwoHOweIknxJ-mRoGA40d25Qc8KJ5QvoyXOndNKVao0PQ2lFVJifv3PSPeDXlNQBeuvpqwP_kpb_FsFGMCAAsmTMwHB-PJwVld8igQdGZyhaKhlnNDyuhw_ecj5MeH4Jzr0afXceI2"
-}
+    "https://fsb.zobj.net/crop.php?r=j9gNj-qwoHOweIknxJ-mRoGA40d25Qc8KJ5QvoyXOndNKVao0PQ2lFVJifv3PSPeDXlNQBeuvpqwP_kpb_FsFGMCAAsmTMwHB-PJwVld8igQdGZyhaKhlnNDyuhw_ecj5MeH4Jzr0afXceI2",
+};
 
 const image5 = {
   uri:
@@ -41,8 +41,16 @@ const image5 = {
 };
 
 const image6 = {
-  uri: 
-  "https://cdn4.vectorstock.com/i/1000x1000/51/38/pink-donut-glaze-background-set-liquid-sweet-flow-vector-13685138.jpg"
+  uri:
+    "https://png.pngtree.com/thumb_back/fh260/back_our/20190620/ourmid/pngtree-donut-pink-simple-fresh-poster-background-image_150687.jpg",
+};
+
+const image7= {
+  uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuMC3qRd8nsyWIuRUguaOYIHL8UpHEP1AILA&usqp=CAU"
+}
+
+const image8 ={
+  uri: "https://media.istockphoto.com/vectors/vector-vertical-endless-border-of-donuts-with-colorful-glaze-sugar-vector-id1190023391?k=6&m=1190023391&s=612x612&w=0&h=bLdFWTZ-AauIN4t0mwym5lTwqftrTG3ynlxGyy_c3WU="
 }
 function HomeScreen({ navigation, route }) {
   React.useEffect(() => {
@@ -52,13 +60,9 @@ function HomeScreen({ navigation, route }) {
   return (
     <View style={styles.container}>
       <ImageBackground source={image} style={styles.image}>
-        <Text style={styles.small}>
-        You made it!
-        </Text>
+        <Text style={styles.small}>You made it!</Text>
         <Text style={styles.small}> -------------</Text>
-        <Text style={styles.small}>
-        Is it donut time yet? 🍩
-        </Text>
+        <Text style={styles.small}>Is it donut time yet?</Text>
 
         <Button
           style={styles.button}
@@ -67,8 +71,13 @@ function HomeScreen({ navigation, route }) {
         />
         <Button
           style={styles.button}
-          title="Go to Details"
+          title="Enter workouts"
           onPress={() => navigation.navigate("Details")}
+        />
+        <Button
+          style={styles.button}
+          title="See your progess!"
+          onPress={() => navigation.navigate("Progress")}
         />
       </ImageBackground>
     </View>
@@ -79,7 +88,6 @@ function CreatePostScreen({ navigation, route }) {
   const [postText, setPostText] = React.useState("");
   return (
     <>
-
       <TextInput
         multiline
         placeholder="What's on your mind?"
@@ -87,7 +95,7 @@ function CreatePostScreen({ navigation, route }) {
         value={postText}
         onChangeText={setPostText}
       />
-      
+
       <Button
         title="Done"
         onPress={() => {
@@ -99,9 +107,8 @@ function CreatePostScreen({ navigation, route }) {
           });
         }}
       />
- 
- <ImageBackground source={image4} style={{flex:3}}></ImageBackground>
 
+      <ImageBackground source={image4} style={{ flex: 3 }}></ImageBackground>
     </>
   );
 }
@@ -110,18 +117,15 @@ function DetailsScreen({ navigation }) {
   return (
     <View style={styles.container}>
       {/* <ImageBackground source={image2} style={styles.image}> */}
-       
-        <Workout  />
-        {/* <Button
+
+      <Workout />
+      {/* <Button
           title="Go to Details... again"
           onPress={() => navigation.push("Details")}
         /> */}
-        <Button
-          title="Go to Home"
-          onPress={() => navigation.navigate("Home")}
-        />
-        {/* <Button title="Go back" onPress={() => navigation.goBack()} /> */}
-        {/* <Button
+      <Button title="Go to Home" onPress={() => navigation.navigate("Home")} />
+      {/* <Button title="Go back" onPress={() => navigation.goBack()} /> */}
+      {/* <Button
           title="Go back to first screen in stack"
           onPress={() => navigation.popToTop()}
         /> */}
@@ -135,7 +139,6 @@ const Stack = createStackNavigator();
 function App() {
   return (
     <NavigationContainer>
-    
       <Stack.Navigator
         initialRouteName="Home"
         screenOptions={{ title: "Squats Til Donuts" }}
@@ -143,6 +146,7 @@ function App() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Details" component={DetailsScreen} />
         <Stack.Screen name="CreatePost" component={CreatePostScreen} />
+        <Stack.Screen name="Progress" component={ProgressScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
