@@ -9,9 +9,9 @@ export default function Home({ history }) {
       <Navbar />
       <Text>
         You made it home! 🛌
-        <hr></hr>
+        {/* <hr></hr> */}
         Is it donut time yet? 🍩
-        <hr></hr>
+        {/* <hr></hr> */}
         <Button title="Press me" onPress={() => history.push("/workout")} />
       </Text>
 

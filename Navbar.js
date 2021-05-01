@@ -14,7 +14,7 @@ export default function Navbar() {
     <View style={styles.container}>
       <Text>
         Workout Track
-        <hr></hr>
+        {/* <hr></hr> */}
 
       </Text>
       <StatusBar style="auto" />
