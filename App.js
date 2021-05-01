@@ -13,6 +13,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from "./Home";
 import Workout from "./Workout";
+import AppText from "./AppText";
 
 const image = {
   uri:
@@ -21,8 +22,28 @@ const image = {
 
 const image2 = {
   uri:
-    "https://image.freepik.com/free-vector/donuts-background-donut-cartoon-donut-seamless-pattern_77895-122.jpg",
+    "https://wallpaperaccess.com/full/3990577.jpg",
 };
+
+const image3 = {
+  uri:
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmeTGvGKG9nB3V8Bg3eECrMQQG5dwOZbysfH5D2nMGqkzp66sLOTKqkVWXhZzMBhBN9dk&usqp=CAU"
+}
+
+const image4 = {
+  uri:
+  "https://fsb.zobj.net/crop.php?r=j9gNj-qwoHOweIknxJ-mRoGA40d25Qc8KJ5QvoyXOndNKVao0PQ2lFVJifv3PSPeDXlNQBeuvpqwP_kpb_FsFGMCAAsmTMwHB-PJwVld8igQdGZyhaKhlnNDyuhw_ecj5MeH4Jzr0afXceI2"
+}
+
+const image5 = {
+  uri:
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR07S5elqEuUtTRfPotQCXmL-HsXY1Ra2wKQKKTEJWY47naAW5uTw9HZPz4tT66ZT3kt7c&usqp=CAU",
+};
+
+const image6 = {
+  uri: 
+  "https://cdn4.vectorstock.com/i/1000x1000/51/38/pink-donut-glaze-background-set-liquid-sweet-flow-vector-13685138.jpg"
+}
 function HomeScreen({ navigation, route }) {
   React.useEffect(() => {
     if (route.params?.post) {
@@ -31,7 +52,14 @@ function HomeScreen({ navigation, route }) {
   return (
     <View style={styles.container}>
       <ImageBackground source={image} style={styles.image}>
-        <Text style={styles.text}>Home Screen</Text>
+        <Text style={styles.small}>
+        You made it!
+        </Text>
+        <Text style={styles.small}> -------------</Text>
+        <Text style={styles.small}>
+        Is it donut time yet? 🍩
+        </Text>
+
         <Button
           style={styles.button}
           title="Create Post"
@@ -51,6 +79,7 @@ function CreatePostScreen({ navigation, route }) {
   const [postText, setPostText] = React.useState("");
   return (
     <>
+
       <TextInput
         multiline
         placeholder="What's on your mind?"
@@ -58,6 +87,7 @@ function CreatePostScreen({ navigation, route }) {
         value={postText}
         onChangeText={setPostText}
       />
+      
       <Button
         title="Done"
         onPress={() => {
@@ -69,6 +99,9 @@ function CreatePostScreen({ navigation, route }) {
           });
         }}
       />
+ 
+ <ImageBackground source={image4} style={{flex:3}}></ImageBackground>
+
     </>
   );
 }
@@ -76,23 +109,23 @@ function CreatePostScreen({ navigation, route }) {
 function DetailsScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <ImageBackground source={image2} style={styles.image}>
-        <Text>Workouts</Text>
-        <Workout style={styles.small} />
-        <Button
+      {/* <ImageBackground source={image2} style={styles.image}> */}
+       
+        <Workout  />
+        {/* <Button
           title="Go to Details... again"
           onPress={() => navigation.push("Details")}
-        />
+        /> */}
         <Button
           title="Go to Home"
           onPress={() => navigation.navigate("Home")}
         />
-        <Button title="Go back" onPress={() => navigation.goBack()} />
-        <Button
+        {/* <Button title="Go back" onPress={() => navigation.goBack()} /> */}
+        {/* <Button
           title="Go back to first screen in stack"
           onPress={() => navigation.popToTop()}
-        />
-      </ImageBackground>
+        /> */}
+      {/* </ImageBackground> */}
     </View>
   );
 }
@@ -102,6 +135,7 @@ const Stack = createStackNavigator();
 function App() {
   return (
     <NavigationContainer>
+    
       <Stack.Navigator
         initialRouteName="Home"
         screenOptions={{ title: "Squats Til Donuts" }}
@@ -124,8 +158,6 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: "contain",
     justifyContent: "center",
-    // backgroundImage:
-    //   "https://png.pngtree.com/thumb_back/fw800/back_our/20190621/ourmid/pngtree-eater-day-donut-flat-advertisement-image_174695.jpg",
     width: 400,
   },
   text: {
@@ -133,6 +165,7 @@ const styles = StyleSheet.create({
     fontSize: 42,
     fontWeight: "bold",
     textAlign: "center",
+    // fontFamily: "Lobster"
     // backgroundColor: "#000000a0",
   },
   button: {
