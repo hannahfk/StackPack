@@ -9,6 +9,7 @@ import React from "react";
 //   ScrollView,
 // } from "react-native";
 import { StatusBar } from "expo-status-bar";
+import { connect } from "react-redux";
 import {
   Container,
   Header,
@@ -23,12 +24,37 @@ import {
 } from "native-base";
 
 import { Alert, StyleSheet, ImageBackground } from "react-native";
+import { fetchWorkouts } from "./client/store/workout";
 
 const image2 = {
   uri: "https://wallpaperaccess.com/full/3990577.jpg",
 };
 
-export default class Workout extends React.Component {
+class Workout extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state= {
+      workouts: [],
+    };
+    this.handleAdd = this.handleAdd.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.loadWorkouts();
+  }
+
+  handleAdd(evt) {
+    const newWorkout = evt.target.name;
+    console.log("target name==>", newWorkout);
+    const existItems = this.state.workouts;
+
+    existItems.push(newWorkout);
+
+    this.setState({
+      workouts: existItems,
+    });
+  }
+
   showAlert = () => Alert.alert("Message", "Info Saved!");
   render() {
     return (
@@ -40,7 +66,6 @@ export default class Workout extends React.Component {
           <Card>
             <CardItem>
               <Body>
-
                 <Text style={styles.medium}>Enter your workout ☞ </Text>
                 <Item regular>
                   <Input style={styles.input} placeholder="...here" />
@@ -82,6 +107,20 @@ export default class Workout extends React.Component {
     );
   }
 }
+
+const mapState = (state) => {
+  return {
+    workouts: state.workouts,
+  };
+};
+
+const mapDispatch = (dispatch) => {
+  return {
+    loadWorkouts: () => dispatch(fetchWorkouts()),
+  };
+};
+
+export default connect(mapState, mapDispatch)(Workout);
 
 const styles = StyleSheet.create({
   image: {

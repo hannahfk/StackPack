@@ -14,8 +14,12 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Home from "./Home";
 import Workout from "./Workout";
 import AppText from "./AppText";
-import ProgressScreen from "./ProgressScreen"
+import ProgressScreen from "./ProgressScreen";
+import { Provider } from "react-redux";
+import store from "./client/store/workout";
+// import { createStore, applyMiddleware } from "redux";
 
+// const store = createStore(() => [], {}, applyMiddleware());
 const image = {
   uri:
     "https://png.pngtree.com/thumb_back/fw800/back_our/20190621/ourmid/pngtree-eater-day-donut-flat-advertisement-image_174695.jpg",
@@ -45,13 +49,15 @@ const image6 = {
     "https://png.pngtree.com/thumb_back/fh260/back_our/20190620/ourmid/pngtree-donut-pink-simple-fresh-poster-background-image_150687.jpg",
 };
 
-const image7= {
-  uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuMC3qRd8nsyWIuRUguaOYIHL8UpHEP1AILA&usqp=CAU"
-}
+const image7 = {
+  uri:
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuMC3qRd8nsyWIuRUguaOYIHL8UpHEP1AILA&usqp=CAU",
+};
 
-const image8 ={
-  uri: "https://media.istockphoto.com/vectors/vector-vertical-endless-border-of-donuts-with-colorful-glaze-sugar-vector-id1190023391?k=6&m=1190023391&s=612x612&w=0&h=bLdFWTZ-AauIN4t0mwym5lTwqftrTG3ynlxGyy_c3WU="
-}
+const image8 = {
+  uri:
+    "https://media.istockphoto.com/vectors/vector-vertical-endless-border-of-donuts-with-colorful-glaze-sugar-vector-id1190023391?k=6&m=1190023391&s=612x612&w=0&h=bLdFWTZ-AauIN4t0mwym5lTwqftrTG3ynlxGyy_c3WU=",
+};
 function HomeScreen({ navigation, route }) {
   React.useEffect(() => {
     if (route.params?.post) {
@@ -139,15 +145,17 @@ const Stack = createStackNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Home"
-        screenOptions={{ title: "Squats Til Donuts" }}
-      >
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Details" component={DetailsScreen} />
-        <Stack.Screen name="CreatePost" component={CreatePostScreen} />
-        <Stack.Screen name="Progress" component={ProgressScreen} />
-      </Stack.Navigator>
+      <Provider store={store}>
+        <Stack.Navigator
+          initialRouteName="Home"
+          screenOptions={{ title: "Squats Til Donuts" }}
+        >
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Details" component={DetailsScreen} />
+          <Stack.Screen name="CreatePost" component={CreatePostScreen} />
+          <Stack.Screen name="Progress" component={ProgressScreen} />
+        </Stack.Navigator>
+      </Provider>
     </NavigationContainer>
   );
 }
