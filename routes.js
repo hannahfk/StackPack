@@ -1,11 +1,10 @@
 import React, { Component, Fragment } from "react";
 // import { connect } from "react-redux";
 import {
-  withRouter,
+
   Route,
   Switch,
-  Redirect,
-  MemoryRouter,
+ 
 } from "react-router-native";
 import Home from "./Home";
 import Workout from "./Workout";
