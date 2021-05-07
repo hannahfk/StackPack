@@ -145,7 +145,7 @@ const Stack = createStackNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <Provider store={store}>
+      <Provider store={store()}>
         <Stack.Navigator
           initialRouteName="Home"
           screenOptions={{ title: "Squats Til Donuts" }}
